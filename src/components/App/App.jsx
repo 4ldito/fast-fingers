@@ -1,10 +1,11 @@
+import WordsContainer from '../WordsContainer/WordsContainer'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <p>Hola mundo</p>
+      <WordsContainer />
     </>
   )
 }
