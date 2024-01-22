@@ -1,10 +1,15 @@
-const Word = () => {
+const Word = ({ word }) => {
+
   return (
     <div>
-      <span>h</span>
-      <span>o</span>
-      <span>l</span>
-      <span>a</span>
+      {
+        word.split("").map(letter => {
+          return (
+            <span key={crypto.randomUUID()} className="letter">{letter}</span>
+          )
+        })
+      }
+      <span></span>
     </div>
   )
 }
