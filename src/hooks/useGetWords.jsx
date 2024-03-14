@@ -4,14 +4,24 @@ import spanish from "../utils/spanish.json";
 
 
 const useGetWords = () => {
-  const { words, setWords, loaded, setLoaded } = wordsStore((state) => state)
+  const { wordsData, setWordsData, loaded, setLoaded } = wordsStore((state) => state)
 
   useEffect(() => {
-    // for now, use a JSON. later change to a api request
-    setWords(spanish.words)
+    // for now, use a JSON. TODO: change to a api request
+    console.log("called")
+    const spanishWordsFormated = {
+      ...spanish,
+      words: spanish.words.map(word => ({
+        text: word,
+        typed: "",
+        isCorrect: null,
+      }))
+    }
+
+    setWordsData(spanishWordsFormated)
   }, [])
 
-  return { words }
+  return { wordsData }
 }
 
 export default useGetWords

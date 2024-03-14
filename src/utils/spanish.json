@@ -2,6 +2,7 @@
   "name": "spanish",
   "bcp47": "es-ES",
   "source": "https://monkeytype.com/languages/spanish.json",
+  "indexActualWord": 0,
   "words": [
     "como",
     "su",

@@ -1,5 +1,4 @@
 import { gameStore } from "../../store/store"
-import Input from "./Input/Input"
 import Words from "./Words/Words"
 import style from "./WordsContainer.module.css"
 
@@ -10,7 +9,7 @@ const WordsContainer = () => {
     <main className={style.container}>
       {wordsFocus && <p style={{color: "white"}}>working!</p>}
       <Words />
-      <Input />
+      {/* <Input /> */}
     </main>
   )
 }

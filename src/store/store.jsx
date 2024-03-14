@@ -1,10 +1,35 @@
 import { create } from 'zustand'
 
 export const wordsStore = create((set) => ({
-  words: [],
+  wordsData: [],
   loaded: false,
-  setWords: (words) => set(() => ({ words })),
-  setLoaded: (isLoaded) => set(() => ({ loaded: isLoaded }))
+  setWordsData: (wordsData) => set(() => ({ wordsData })),
+  setWords: (words) => set((state) => ({ wordsData: { ...state.wordsData, words } })),
+  setLoaded: (isLoaded) => set(() => ({ loaded: isLoaded })),
+  setIndexActualWord: (index) => set((state) => ({
+    wordsData: {
+      ...state.wordsData,
+      indexActualWord: index,
+    },
+  })),
+  setTypedWord: (typedWord) => set((state) => ({
+    wordsData: {
+      ...state.wordsData,
+      words: state.wordsData.words.map((word, index) => {
+        if (index === state.wordsData.indexActualWord) {
+          return {
+            ...word,
+            typed: typedWord
+          };
+        }
+        return word;
+      })
+    }
+  })),
+  indexActualWord: 0,
+  name: "",
+  bcp47: "",
+  source: "",
 }))
 
 export const gameStore = create((set) => ({
