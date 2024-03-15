@@ -1,0 +1,23 @@
+.caret {
+  width: 2px;
+  height: 1.5rem;
+  background: #5cd5fb;
+  position: absolute;
+  animation-name: caretFlash;
+  animation-iteration-count: infinite;
+  animation-duration: 1s;
+}
+
+@keyframes caretFlash {
+  0% {
+    background: transparent;
+  }
+
+  50% {
+    background: #5cd5fb;
+  }
+
+  100% {
+    background: transparent;
+  }
+}

@@ -1,12 +1,13 @@
-const Word = ({ word }) => {
+import Letter from "./Letter/Letter"
+import style from "./Word.module.css"
 
+const Word = ({ word }) => {
   return (
     <div>
       {
-        word.text.split("").map(letter => {
+        word.text.split("").map((letter, index) => {
           return (
-            // change <span> for <letter> then
-            <span key={crypto.randomUUID()} className="letter">{letter}</span>
+            <Letter key={crypto.randomUUID()} letter={letter} typed={word.typed[index]} />
           )
         })
       }

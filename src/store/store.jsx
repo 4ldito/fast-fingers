@@ -30,9 +30,11 @@ export const wordsStore = create((set) => ({
   name: "",
   bcp47: "",
   source: "",
-}))
+}));
 
 export const gameStore = create((set) => ({
   wordsFocus: false,
-  setWordsFocus: (setFocus) => set(() => ({ wordsFocus: setFocus }))
+  setWordsFocus: (setFocus) => set(() => ({ wordsFocus: setFocus })),
+  isPlaying: false,
+  setIsPlaying: (isPlaying) => set(() => ({ isPlaying })),
 }));

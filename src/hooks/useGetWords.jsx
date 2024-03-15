@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { wordsStore } from "../store/store"
 import spanish from "../utils/spanish.json";
 
@@ -8,10 +8,10 @@ const useGetWords = () => {
 
   useEffect(() => {
     // for now, use a JSON. TODO: change to a api request
-    console.log("called")
     const spanishWordsFormated = {
       ...spanish,
       words: spanish.words.map(word => ({
+      // words: spanish.words.slice(0, 4).map(word => ({
         text: word,
         typed: "",
         isCorrect: null,
@@ -21,7 +21,9 @@ const useGetWords = () => {
     setWordsData(spanishWordsFormated)
   }, [])
 
-  return { wordsData }
+  const memoizedWords = useMemo(() => wordsData.words, [wordsData.words]);
+
+  return { wordsData, memoizedWords }
 }
 
 export default useGetWords

@@ -4,17 +4,17 @@ import Word from "./Word/Word"
 import style from "./Words.module.css"
 
 const Words = () => {
-  const { wordsData } = useGetWords();
-  const { setWordsFocus } = gameStore((state) => state)
+  const { memoizedWords } = useGetWords();
+  // const { setWordsFocus } = gameStore((state) => state)
 
-  const setFocus = () => {
-    setWordsFocus(true)
-  }
+  // const setFocus = () => {
+  //   setWordsFocus(true)
+  // }
 
   return (
-    <section onClick={setFocus} className={style.wordsContainer}>
+    <section className={style.wordsContainer}>
       {
-        wordsData?.words?.map(w => {
+        memoizedWords?.map(w => {
           return <Word word={w} key={crypto.randomUUID()} />
         })
       }
