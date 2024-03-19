@@ -22,7 +22,6 @@ export const useGame = () => {
 
   const handleKeyDown = (e) => {
     if (e.code === "Backspace") {
-      console.log("borrar")
       const actualWord = wordsData.words[wordsData.indexActualWord];
       const typed = actualWord.typed.slice(0, -1);
       setTypedWord(typed);
