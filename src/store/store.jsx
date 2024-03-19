@@ -37,4 +37,14 @@ export const gameStore = create((set) => ({
   setWordsFocus: (setFocus) => set(() => ({ wordsFocus: setFocus })),
   isPlaying: false,
   setIsPlaying: (isPlaying) => set(() => ({ isPlaying })),
+  actualLetter: {
+    wordIndex: 0,
+    letterIndex: 0
+  },
+  setActualLetter: (pos) => set((state) => ({
+    actualLetter: {
+      ...state.actualLetter,
+      ...pos
+    },
+  })),
 }));

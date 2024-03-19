@@ -1,7 +1,6 @@
 .wordsContainer {
   padding: 1.5rem;
   max-width: 1000px;
-  /* background-color: #2f2f2f; */
   display: flex;
   column-gap: 1rem;
   row-gap: 0.5rem;

@@ -1,13 +1,21 @@
 import Letter from "./Letter/Letter"
-import style from "./Word.module.css"
+// import style from "./Word.module.css"
 
-const Word = ({ word }) => {
+const Word = ({ word, actualLetter, indexWord, activeLetterRef }) => {
   return (
     <div>
       {
         word.text.split("").map((letter, index) => {
           return (
-            <Letter key={crypto.randomUUID()} letter={letter} typed={word.typed[index]} />
+            <Letter
+              activeLetterRef={activeLetterRef}
+              key={crypto.randomUUID()}
+              letter={letter}
+              typed={word.typed[index]}
+              indexWord={indexWord}
+              indexLetter={index}
+              actualLetter={actualLetter}
+            />
           )
         })
       }
