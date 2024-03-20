@@ -19,7 +19,6 @@ const Words = () => {
           />
         })
       }
-      {/* <Caret activeLetterRef={activeLetterRef} /> */}
     </section>
   )
 }
