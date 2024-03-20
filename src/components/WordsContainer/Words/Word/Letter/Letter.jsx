@@ -7,12 +7,10 @@ const Letter = ({ letter, typed, indexWord, indexLetter, actualLetter, word, ful
   if ((letter !== typed && typed) || incorrect) correctClasses.push(style.incorrect);
 
   if (indexWord === actualLetter?.wordIndex && indexLetter === actualLetter?.letterIndex) {
-    console.log("entró?")
     correctClasses.push(style.active);
   }
   else if ((indexWord === actualLetter?.wordIndex && fullTyped.length === word?.length && indexLetter + 1 >= word?.length)
     || (incorrect && fullTyped.length === indexLetter + 1)) {
-    console.log()
     correctClasses.push(style.final);
   }
 
