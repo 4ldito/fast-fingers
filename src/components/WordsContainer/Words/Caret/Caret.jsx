@@ -1,7 +1,12 @@
+import { useEffect } from "react"
 import style from "./Caret.module.css"
 
 const Caret = ({ activeLetterRef }) => {
-  console.log(activeLetterRef)
+  
+  useEffect(() => {
+    console.log(activeLetterRef)
+  }, [activeLetterRef]);
+  
   return (
     <div className={style.caret}></div>
   )

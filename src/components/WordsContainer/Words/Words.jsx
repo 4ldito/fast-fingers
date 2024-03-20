@@ -1,12 +1,9 @@
-import { useRef } from "react";
 import useGetWords from "../../../hooks/useGetWords";
 import { gameStore } from "../../../store/store";
-import Caret from "./Caret/Caret";
 import Word from "./Word/Word"
 import style from "./Words.module.css"
 
 const Words = () => {
-  const activeLetterRef = useRef(null);
   const { memoizedWords } = useGetWords();
   const { actualLetter } = gameStore((state) => state);
 
@@ -19,12 +16,10 @@ const Words = () => {
             key={crypto.randomUUID()}
             actualLetter={actualLetter}
             indexWord={index}
-            activeLetterRef={activeLetterRef}
           />
         })
       }
-      <Caret activeLetterRef={activeLetterRef} />
-
+      {/* <Caret activeLetterRef={activeLetterRef} /> */}
     </section>
   )
 }

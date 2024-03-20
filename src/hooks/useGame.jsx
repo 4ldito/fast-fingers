@@ -10,13 +10,18 @@ export const useGame = () => {
   const handleKeyPress = (e) => {
     const actualWord = wordsData.words[wordsData.indexActualWord];
     if (!isPlaying) setIsPlaying(true);
-    
-    if (e.code === "Space" && actualWord.typed) {
+
+    if (e.code === "Space") {
+      if (!actualWord.typed) return;
       setIndexActualWord(wordsData.indexActualWord + 1)
+      console.log("aumentó en 1 word")
+      setActualLetter({ wordIndex: 1, letterIndex: 0 });
       return;
     }
-
+    
     const typed = actualWord.typed + e.key;
+    setActualLetter({ letterIndex: 1 });
+    console.log("aumentó en 1 letter")
     setTypedWord(typed);
   };
 
@@ -24,6 +29,7 @@ export const useGame = () => {
     if (e.code === "Backspace") {
       const actualWord = wordsData.words[wordsData.indexActualWord];
       const typed = actualWord.typed.slice(0, -1);
+      setActualLetter({ letterIndex: -1 });
       setTypedWord(typed);
     }
   }

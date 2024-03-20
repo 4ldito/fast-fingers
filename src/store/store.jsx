@@ -43,8 +43,12 @@ export const gameStore = create((set) => ({
   },
   setActualLetter: (pos) => set((state) => ({
     actualLetter: {
-      ...state.actualLetter,
-      ...pos
+      wordIndex: pos.wordIndex === 1 ? ++state.actualLetter.wordIndex : pos.wordIndex === 0 ? 0 : state.actualLetter.wordIndex,
+      letterIndex:
+        pos.letterIndex === 1 ? ++state.actualLetter.letterIndex
+          : pos.letterIndex === 0 ? 0
+            : pos.letterIndex === -1 ? --state.actualLetter.letterIndex
+              : state.actualLetter.letterIndex,
     },
   })),
 }));

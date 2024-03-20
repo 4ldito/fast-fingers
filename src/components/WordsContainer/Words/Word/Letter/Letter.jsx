@@ -1,19 +1,20 @@
 import style from "./Letter.module.css"
 
-const Letter = ({ letter, typed, indexWord, indexLetter, actualLetter, activeLetterRef }) => {
+const Letter = ({ letter, typed, indexWord, indexLetter, actualLetter, word, fullTyped }) => {
   const correctClasses = [];
-
+  correctClasses.push(style.letter);
   if (letter === typed) correctClasses.push(style.correct);
   if (letter !== typed && typed) correctClasses.push(style.incorrect);
+
   if (indexWord === actualLetter.wordIndex && indexLetter === actualLetter.letterIndex) {
     correctClasses.push(style.active);
-    console.log("entró")
+  }
+  else if (indexWord === actualLetter.wordIndex && fullTyped.length === word.length && indexLetter + 1 >= word.length) {
+    correctClasses.push(style.final);
   }
 
-  return correctClasses.includes(style.active)
-    ? <span ref={activeLetterRef} key={crypto.randomUUID()} className={correctClasses.join(" ")} >{letter}</span>
-    : <span key={crypto.randomUUID()} className={correctClasses.join(" ")} >{letter}</span>
-
+  // return <span key={crypto.randomUUID()} className={correctClasses.join(" ")}>{typed ? typed : letter}</span>
+  return <span key={crypto.randomUUID()} className={correctClasses.join(" ")}>{letter}</span>
 }
 
 export default Letter

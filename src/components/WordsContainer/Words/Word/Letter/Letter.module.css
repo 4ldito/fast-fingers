@@ -1,3 +1,8 @@
+.letter {
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+
 .correct {
   color: white;
 }
@@ -7,5 +12,35 @@
 }
 
 .active {
-  color: violet;
+  border-left: 1px solid violet;
+  animation: blink-left 1s infinite;
+}
+
+.final {
+  border-right: 1px solid violet;
+  animation: blink-right 1s infinite;
+}
+
+@keyframes blink-left {
+  0% {
+    border-left-color: transparent;
+  }
+  50% {
+    border-left-color: violet;
+  }
+  100% {
+    border-left-color: transparent;
+  }
+}
+
+@keyframes blink-right {
+  0% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: violet;
+  }
+  100% {
+    border-right-color: transparent;
+  }
 }
