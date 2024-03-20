@@ -28,9 +28,10 @@ export const useGame = () => {
   const handleKeyDown = (e) => {
     if (e.code === "Backspace") {
       const actualWord = wordsData.words[wordsData.indexActualWord];
-      const typed = actualWord.typed.slice(0, -1);
+      const typed = actualWord.typed;
+      if (!typed) return;
       setActualLetter({ letterIndex: -1 });
-      setTypedWord(typed);
+      setTypedWord(typed.slice(0, -1));
     }
   }
 
