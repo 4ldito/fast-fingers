@@ -11,7 +11,7 @@ const useGetWords = () => {
     const spanishWordsFormated = {
       ...spanish,
       // words: spanish.words.map(word => ({
-      words: spanish.words.slice(0, 100).map(word => ({
+      words: spanish.words.slice(0, 50).map(word => ({
         text: word,
         typed: "",
         isCorrect: null,

@@ -2,6 +2,7 @@ import Letter from "./Letter/Letter"
 // import style from "./Word.module.css"
 
 const Word = ({ word, actualLetter, indexWord }) => {
+  // console.log(word.typed, word.text)
   return (
     <div>
       {
@@ -18,6 +19,19 @@ const Word = ({ word, actualLetter, indexWord }) => {
               actualLetter={actualLetter}
             />
           )
+        })
+      }
+      {
+        (word.typed.length > word.text.length) && word.typed.split("").map((letter, index) => {
+          return index >= word.text.length ?
+            <Letter
+              key={crypto.randomUUID()}
+              letter={letter}
+              incorrect={true}
+              fullTyped={word.typed}
+              indexLetter={index}
+            />
+            : ""
         })
       }
     </div>

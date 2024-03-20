@@ -1,0 +1,1 @@
+export const MAX_CHARS_PER_WORD = 20;

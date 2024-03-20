@@ -4,11 +4,11 @@
 }
 
 .correct {
-  color: white;
+  color: #fafafa;
 }
 
 .incorrect {
-  color: red;
+  color: #ff1818;
 }
 
 .active {

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import useGetWords from './useGetWords';
 import { wordsStore, gameStore } from '../store/store';
+import { MAX_CHARS_PER_WORD } from '../const/consts';
 
 export const useGame = () => {
   const { wordsData } = useGetWords();
@@ -14,14 +15,13 @@ export const useGame = () => {
     if (e.code === "Space") {
       if (!actualWord.typed) return;
       setIndexActualWord(wordsData.indexActualWord + 1)
-      console.log("aumentó en 1 word")
       setActualLetter({ wordIndex: 1, letterIndex: 0 });
       return;
     }
     
     const typed = actualWord.typed + e.key;
+    if (typed.length >= MAX_CHARS_PER_WORD) return;
     setActualLetter({ letterIndex: 1 });
-    console.log("aumentó en 1 letter")
     setTypedWord(typed);
   };
 
