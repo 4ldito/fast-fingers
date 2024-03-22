@@ -21,17 +21,18 @@ const Word = ({ word, actualLetter, indexWord }) => {
           )
         })
       }
-      {
+      { // extra typed letters
         (word.typed.length > word.text.length) && word.typed.split("").map((letter, index) => {
-          return index >= word.text.length ?
+          return index >= word.text.length &&
             <Letter
               key={crypto.randomUUID()}
               letter={letter}
               incorrect={true}
               fullTyped={word.typed}
               indexLetter={index}
+              actualLetter={actualLetter}
+              indexWord={indexWord}
             />
-            : ""
         })
       }
     </div>

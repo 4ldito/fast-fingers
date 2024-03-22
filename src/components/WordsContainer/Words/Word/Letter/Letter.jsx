@@ -13,7 +13,7 @@ const Letter = ({ letter, typed, indexWord, indexLetter, actualLetter, word, ful
     correctClasses.push(style.active);
   }
   else if ((indexWord === actualLetter?.wordIndex - steps.start && fullTyped.length === word?.length && indexLetter + 1 >= word?.length)
-    || (incorrect && fullTyped.length === indexLetter + 1)) {
+    || (incorrect && fullTyped.length === indexLetter + 1 && indexWord === actualLetter?.wordIndex - steps.start)) {
     correctClasses.push(style.final);
   }
 
