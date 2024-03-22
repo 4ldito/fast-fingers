@@ -1,0 +1,7 @@
+.word {
+  border-bottom: 2px solid transparent;
+}
+
+.incorrect {
+  border-bottom: 2px solid #ff4053;
+}

@@ -7,12 +7,13 @@ import { MAX_CHARS_PER_WORD } from "@const/consts";
 export const useGame = () => {
   const { wordsData } = useGetWords();
   const { isPlaying, setIsPlaying, setActualLetter, wrapIndex, setSteps, steps } = gameStore((state) => state)
-  const { setIndexActualWord, setTypedWord } = wordsStore((state) => state)
+  const { setIndexActualWord, updateWord } = wordsStore((state) => state)
 
   const handleKeyPress = (e) => {
     const actualWord = wordsData.words[wordsData.indexActualWord];
     if (!isPlaying) setIsPlaying(true);
 
+    const typed = actualWord.typed + e.key;
     if (e.code === "Space") {
       if (!actualWord.typed) return;
       setIndexActualWord(wordsData.indexActualWord + 1)
@@ -23,10 +24,10 @@ export const useGame = () => {
       return;
     }
 
-    const typed = actualWord.typed + e.key;
     if (typed.length >= MAX_CHARS_PER_WORD) return;
+    const isCorrect = typed === actualWord.text;
     setActualLetter({ letterIndex: 1 });
-    setTypedWord(typed);
+    updateWord(typed, isCorrect);
   };
 
   const handleKeyDown = (e) => {
@@ -34,8 +35,9 @@ export const useGame = () => {
       const actualWord = wordsData.words[wordsData.indexActualWord];
       const typed = actualWord.typed;
       if (!typed) return;
+      const isCorrect = typed === actualWord.text;
       setActualLetter({ letterIndex: -1 });
-      setTypedWord(typed.slice(0, -1));
+      updateWord(typed.slice(0, -1), isCorrect);
     }
   }
 

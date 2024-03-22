@@ -12,14 +12,15 @@ export const wordsStore = create((set) => ({
       indexActualWord: index,
     },
   })),
-  setTypedWord: (typedWord) => set((state) => ({
+  updateWord: (typedWord, isCorrect) => set((state) => ({
     wordsData: {
       ...state.wordsData,
       words: state.wordsData.words.map((word, index) => {
         if (index === state.wordsData.indexActualWord) {
           return {
             ...word,
-            typed: typedWord
+            typed: typedWord,
+            isCorrect: isCorrect ?? word.isCorrect
           };
         }
         return word;

@@ -13,7 +13,7 @@ const useGetWords = () => {
       // words: spanish.words.slice(0, MAX_WORDS_PER_STEP).map(word => ({
         text: word,
         typed: "",
-        isCorrect: null,
+        isCorrect: false,
       }))
     }
 
