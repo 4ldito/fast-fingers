@@ -1,4 +1,4 @@
-import { gameStore } from "../../../../../store/store";
+import { gameStore } from "@store/store";
 import style from "./Letter.module.css"
 
 const Letter = ({ letter, typed, indexWord, indexLetter, actualLetter, word, fullTyped, incorrect }) => {

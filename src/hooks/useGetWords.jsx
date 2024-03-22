@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from "react"
-import { wordsStore } from "../store/store"
+import { wordsStore } from "@store/store";
 import spanish from "../utils/spanish.json";
 
 const useGetWords = () => {

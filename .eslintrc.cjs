@@ -12,12 +12,15 @@ module.exports = {
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {
-    'indent': ['error', 2, { 'SwitchCase': 1 }],  
+    'indent': ['error', 2, { 'SwitchCase': 1 }],
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
     'react/prop-types': 'off',
     'react-hooks/exhaustive-deps': 'off'
+  },
+  globals: {
+    __dirname: 'readonly'
   },
 }

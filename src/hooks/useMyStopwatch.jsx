@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useStopwatch } from "react-timer-hook";
-import { gameStore } from "../store/store";
+import { gameStore } from "@store/store";
 
 const useMyStopwatch = () => {
   const { isPlaying } = gameStore((state) => state)

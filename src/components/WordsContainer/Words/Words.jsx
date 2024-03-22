@@ -1,10 +1,10 @@
 import { useRef } from "react";
-import useGetWords from "../../../hooks/useGetWords";
-import { gameStore } from "../../../store/store";
+import { gameStore } from "@store/store";
+import { MAX_WORDS_PER_STEP } from "@const/consts";
+import useGetWrap from "@hooks/useGetWrap";
+import useGetWords from "@hooks/useGetWords";
 import Word from "./Word/Word"
-import { MAX_WORDS_PER_STEP } from "../../../const/consts"
 import style from "./Words.module.css"
-import useGetWrap from "../../../hooks/useGetWrap";
 
 const Words = () => {
   const containerRef = useRef(null);

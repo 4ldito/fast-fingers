@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { gameStore } from "../store/store";
+import { gameStore } from "@store/store";
 
 const useGetWrap = (containerRef) => {
   const { setWrapIndex, steps } = gameStore((state) => state);
