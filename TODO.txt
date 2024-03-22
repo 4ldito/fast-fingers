@@ -1,0 +1,18 @@
+Priorities: 
+
+[X] update setActualLetter 
+[] show finish WPM
+
+Others
+
+[] timer with SS format instead of S
+[] change icon
+[] change font
+[] add ctrl + p line command
+[] restart with tab
+[] gamemodes: time, words, acentos, case sensitive, 
+[] change colors
+
+[] make online ranking
+[] make online versus
+[] Gamemode with only 1 word visible 
