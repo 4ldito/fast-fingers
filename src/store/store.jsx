@@ -27,9 +27,9 @@ export const wordsStore = create((set) => ({
     }
   })),
   indexActualWord: 0,
-  name: "",
-  bcp47: "",
-  source: "",
+  // name: "",
+  // bcp47: "",
+  // source: "",
 }));
 
 export const gameStore = create((set) => ({
@@ -51,4 +51,8 @@ export const gameStore = create((set) => ({
               : state.actualLetter.letterIndex,
     },
   })),
+  steps: { start: 0, end: 50 },
+  setSteps: (steps) => set(() => ({ steps })),
+  wrapIndex: null,
+  setWrapIndex: (wrapIndex) => set(() => ({ wrapIndex }))
 }));

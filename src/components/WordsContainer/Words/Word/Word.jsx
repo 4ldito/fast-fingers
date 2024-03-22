@@ -2,7 +2,7 @@ import Letter from "./Letter/Letter"
 // import style from "./Word.module.css"
 
 const Word = ({ word, actualLetter, indexWord }) => {
-  // console.log(word.typed, word.text)
+
   return (
     <div>
       {
