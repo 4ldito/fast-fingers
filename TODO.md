@@ -2,6 +2,10 @@ Priorities:
 
 [X] update setActualLetter 
 [] show finish WPM
+[X] remove timer
+[] con backspace poder volver 1 word atrás 
+[] Think names. MasterTyping?
+[] arreglar wrap cuando se equivocan
 
 Others
 
@@ -16,3 +20,4 @@ Others
 [] make online ranking
 [] make online versus
 [] Gamemode with only 1 word visible 
+[] change background color to add suspense

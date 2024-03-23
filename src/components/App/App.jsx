@@ -1,15 +1,15 @@
 import WordsContainer from '../WordsContainer/WordsContainer'
 import { useGame } from "@hooks/useGame";
 
-import './App.css'
-import Gamemodes from '../Gamemodes/Gamemodes';
+import './App.module.css'
+import Header from '../Header/Header';
 
 function App() {
   useGame();
 
   return (
     <>
-      <Gamemodes />
+      <Header />
       <WordsContainer />
     </>
   )
