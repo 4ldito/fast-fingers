@@ -5,10 +5,3 @@
   padding: 0.5rem 2rem;
   border-radius: 5px;
 }
-
-.container button {
-  all: unset;
-  padding: 0.2rem 1rem;
-  border-radius: 5px;
-  background-color: #292929;
-}

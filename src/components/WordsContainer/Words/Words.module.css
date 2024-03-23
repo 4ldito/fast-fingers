@@ -1,5 +1,4 @@
 .wordsContainer {
-  padding: 1.5rem;
   max-width: 1000px;
   display: flex;
   column-gap: 1rem;
@@ -9,5 +8,5 @@
   user-select: none;
   border-radius: 10px;
   font-size: 2rem;
-  height: 100px;
+  height: 120px;
 }

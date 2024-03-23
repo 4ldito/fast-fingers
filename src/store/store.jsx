@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { DEFAULT_GAMEMODE } from '@const/consts';
 
 export const wordsStore = create((set) => ({
   wordsData: [],
@@ -55,5 +56,7 @@ export const gameStore = create((set) => ({
   steps: { start: 0, end: 50 },
   setSteps: (steps) => set(() => ({ steps })),
   wrapIndex: null,
-  setWrapIndex: (wrapIndex) => set(() => ({ wrapIndex }))
+  setWrapIndex: (wrapIndex) => set(() => ({ wrapIndex })),
+  gamemode: DEFAULT_GAMEMODE,
+  setGamemode: (gamemode) => set(() => ({ gamemode }))
 }));
