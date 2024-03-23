@@ -13,7 +13,7 @@ export const useGame = () => {
     if (!isPlaying) setIsPlaying(true);
 
     const typed = actualWord.typed + e.key;
-    if (e.code === "Space") {
+    if (e.code === "Space" || e.code === "Enter") {
       if (!actualWord.typed) return;
       setIndexActualWord(wordsData.indexActualWord + 1)
       setActualLetter({ wordIndex: 1, letterIndex: 0 });
