@@ -3,7 +3,7 @@ import { gameStore } from '@store/store';
 import { DEFAULT_TIME } from "@const/consts";
 
 const useTimer = () => {
-  const { isPlaying } = gameStore((state) => state)
+  const { isPlaying, setFinishedGame } = gameStore((state) => state)
   const [time, setTime] = useState(DEFAULT_TIME);
 
   useEffect(() => {
@@ -12,9 +12,10 @@ const useTimer = () => {
     if (isPlaying) {
       timer = setInterval(() => {
         setTime(prevCounter => {
-          if (prevCounter > 0) return prevCounter - 1;
+          if (prevCounter > 1) return prevCounter - 1;
           else {
             clearInterval(timer);
+            setFinishedGame(true)
             return 0;
           }
 

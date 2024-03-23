@@ -35,8 +35,8 @@ export const wordsStore = create((set) => ({
 }));
 
 export const gameStore = create((set) => ({
-  wordsFocus: false,
-  setWordsFocus: (setFocus) => set(() => ({ wordsFocus: setFocus })),
+  finishedGame: false,
+  setFinishedGame: (finishedGame) => set(() => ({ finishedGame })),
   isPlaying: false,
   setIsPlaying: (isPlaying) => set(() => ({ isPlaying })),
   actualLetter: {
@@ -59,4 +59,5 @@ export const gameStore = create((set) => ({
   setWrapIndex: (wrapIndex) => set(() => ({ wrapIndex })),
   gamemode: DEFAULT_GAMEMODE,
   setGamemode: (gamemode) => set(() => ({ gamemode }))
+  
 }));
