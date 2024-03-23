@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect } from "preact/hooks";
 import { gameStore } from "@store/store";
 
 const useGetWrap = (containerRef) => {

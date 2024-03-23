@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react"
+import { useEffect, useMemo } from "preact/hooks";
 import { wordsStore } from "@store/store";
 import spanish from "../utils/spanish.json";
 
