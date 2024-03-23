@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { useMemo } from "preact/hooks";
 import { gameStore } from "@store/store"
 import style from "./Letter.module.css"
 

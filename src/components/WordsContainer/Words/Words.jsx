@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef } from 'preact/hooks';
 import { gameStore } from "@store/store";
 import { MAX_WORDS_PER_STEP } from "@const/consts";
 import useGetWrap from "@hooks/useGetWrap";

@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect } from "preact/hooks";
 import useGetWords from './useGetWords';
 import { wordsStore, gameStore } from "@store/store";
 import { MAX_CHARS_PER_WORD } from "@const/consts";
-
 
 export const useGame = () => {
   const { wordsData } = useGetWords();
