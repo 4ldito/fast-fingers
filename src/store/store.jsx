@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import { DEFAULT_GAMEMODE } from '@const/consts';
+import { getWordIndexs } from '../utils/helpers';
 
 export const wordsStore = create((set) => ({
   wordsData: [],
@@ -21,7 +22,7 @@ export const wordsStore = create((set) => ({
     }
   })),
 }));
-
+  
 export const gameStore = create((set) => ({
   finishedGame: false,
   setFinishedGame: (finishedGame) => set(() => ({ finishedGame })),
@@ -33,12 +34,7 @@ export const gameStore = create((set) => ({
   },
   setActualWord: (pos) => set((state) => ({
     actualWord: {
-      wordIndex: pos.wordIndex === 1 ? ++state.actualWord.wordIndex : pos.wordIndex === 0 ? 0 : state.actualWord.wordIndex,
-      letterIndex:
-        pos.letterIndex === 1 ? ++state.actualWord.letterIndex
-          : pos.letterIndex === 0 ? 0
-            : pos.letterIndex === -1 ? --state.actualWord.letterIndex
-              : state.actualWord.letterIndex,
+      ...getWordIndexs(state, pos)
     },
   })),
   steps: { start: 0, end: 50 },
