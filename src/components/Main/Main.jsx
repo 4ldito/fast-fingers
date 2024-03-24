@@ -1,10 +1,10 @@
 import GamemodeInfo from "./GamemodeInfo/GamemodeInfo"
 import Words from "./Words/Words"
-import style from "./WordsContainer.module.css"
+import style from "./Main.module.css"
 import { gameStore } from '@store/store';
-import Results from './../Results/Results';
+import Results from '../Results/Results';
 
-const WordsContainer = () => {
+const Main = () => {
   const { finishedGame } = gameStore((state) => state)
 
   return (
@@ -20,4 +20,4 @@ const WordsContainer = () => {
   )
 }
 
-export default WordsContainer
+export default Main

@@ -1,9 +1,9 @@
-import WordsContainer from '../WordsContainer/WordsContainer'
 import { useGame } from "@hooks/useGame";
 import { gameStore } from '@store/store';
 import Header from '../Header/Header';
 import Loading from '../Loading/Loading';
 import './App.module.css'
+import Main from '../Main/Main';
 
 function App() {
   const { loading } = gameStore((state) => state)
@@ -13,7 +13,7 @@ function App() {
     <>
       {loading && <Loading />}
       <Header />
-      <WordsContainer />
+      <Main />
       {/* {finishedGame && <Results />} */}
     </>
   )
