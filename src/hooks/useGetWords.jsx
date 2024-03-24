@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from "preact/hooks";
 import { wordsStore, gameStore } from "@store/store";
 import spanish from "../utils/spanish.json";
+import { shuffleArray } from './../utils/helpers';
 
 const useGetWords = () => {
   const { wordsData, setWordsData } = wordsStore((state) => state)
@@ -8,8 +9,12 @@ const useGetWords = () => {
 
   useEffect(() => {
     if (finishedGame) return;
+    fetchWords();
+  }, [finishedGame])
+
+  const fetchWords = () => {
     // for now, use a JSON. TODO: change to a api request
-    const randomSort = spanish.words.sort(() => Math.random() - 0.5)
+    const randomSort = shuffleArray(spanish.words)
     const spanishWordsFormated = {
       ...spanish,
       words: randomSort.map(word => ({
@@ -21,7 +26,7 @@ const useGetWords = () => {
 
     setLoading(false)
     setWordsData(spanishWordsFormated)
-  }, [finishedGame])
+  }
 
   const memoizedWords = useMemo(() => wordsData.words, [wordsData.words]);
 
