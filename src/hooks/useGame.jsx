@@ -5,38 +5,38 @@ import { MAX_CHARS_PER_WORD } from "@const/consts";
 
 export const useGame = () => {
   const { wordsData } = useGetWords();
-  const { isPlaying, setIsPlaying, setActualLetter, wrapIndex, setSteps, steps } = gameStore((state) => state)
-  const { setIndexActualWord, updateWord } = wordsStore((state) => state)
+  const { isPlaying, setIsPlaying, setActualLetter, wrapIndex, setSteps, steps, actualLetter, finishedGame } = gameStore((state) => state)
+  const { updateWord } = wordsStore((state) => state)
 
   const handleKeyPress = (e) => {
-    const actualWord = wordsData.words[wordsData.indexActualWord];
-    if (!isPlaying) setIsPlaying(true);
-
+    if (finishedGame) return;
+    const actualWord = wordsData.words[actualLetter.wordIndex];
     const typed = actualWord.typed + e.key;
     if (e.code === "Space" || e.code === "Enter") {
       if (!actualWord.typed) return;
-      setIndexActualWord(wordsData.indexActualWord + 1)
       setActualLetter({ wordIndex: 1, letterIndex: 0 });
-      if (wordsData.indexActualWord - steps.start === wrapIndex) {
+      if (actualLetter.wordIndex - 1 - steps.start === wrapIndex) {
         setSteps({ start: steps.start + wrapIndex + 1, end: steps.end + wrapIndex + 1 })
       }
       return;
     }
+    if (!isPlaying) setIsPlaying(true);
 
     if (typed.length >= MAX_CHARS_PER_WORD) return;
     const isCorrect = typed === actualWord.text;
     setActualLetter({ letterIndex: 1 });
-    updateWord(typed, isCorrect);
+    updateWord(typed, isCorrect, actualLetter.wordIndex);
   };
 
   const handleKeyDown = (e) => {
+    if (finishedGame) return;
     if (e.code === "Backspace") {
-      const actualWord = wordsData.words[wordsData.indexActualWord];
+      const actualWord = wordsData.words[actualLetter.wordIndex];
       const typed = actualWord.typed;
       if (!typed) return;
       const isCorrect = typed === actualWord.text;
       setActualLetter({ letterIndex: -1 });
-      updateWord(typed.slice(0, -1), isCorrect);
+      updateWord(typed.slice(0, -1), isCorrect, actualLetter.wordIndex);
     }
   }
 

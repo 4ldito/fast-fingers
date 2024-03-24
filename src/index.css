@@ -35,7 +35,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   height: 100vh;
-  background-color: #292929;
+  background-color: #1c1b2294;
   color-scheme: dark;
 }
 ol, ul {

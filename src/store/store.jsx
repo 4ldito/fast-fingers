@@ -3,21 +3,13 @@ import { DEFAULT_GAMEMODE } from '@const/consts';
 
 export const wordsStore = create((set) => ({
   wordsData: [],
-  loaded: false,
   setWordsData: (wordsData) => set(() => ({ wordsData })),
   setWords: (words) => set((state) => ({ wordsData: { ...state.wordsData, words } })),
-  setLoaded: (isLoaded) => set(() => ({ loaded: isLoaded })),
-  setIndexActualWord: (index) => set((state) => ({
-    wordsData: {
-      ...state.wordsData,
-      indexActualWord: index,
-    },
-  })),
-  updateWord: (typedWord, isCorrect) => set((state) => ({
+  updateWord: (typedWord, isCorrect, i) => set((state) => ({
     wordsData: {
       ...state.wordsData,
       words: state.wordsData.words.map((word, index) => {
-        if (index === state.wordsData.indexActualWord) {
+        if (index === i) {
           return {
             ...word,
             typed: typedWord,
@@ -28,10 +20,6 @@ export const wordsStore = create((set) => ({
       })
     }
   })),
-  indexActualWord: 0,
-  // name: "",
-  // bcp47: "",
-  // source: "",
 }));
 
 export const gameStore = create((set) => ({
@@ -58,6 +46,16 @@ export const gameStore = create((set) => ({
   wrapIndex: null,
   setWrapIndex: (wrapIndex) => set(() => ({ wrapIndex })),
   gamemode: DEFAULT_GAMEMODE,
-  setGamemode: (gamemode) => set(() => ({ gamemode }))
-  
+  setGamemode: (gamemode) => set(() => ({ gamemode })),
+  loading: true,
+  setLoading: (loading) => set(() => ({ loading })),
+  restartGameStore: () => set((state) => ({
+    ...state,
+    wrapIndex: null,
+    steps: { start: 0, end: 50 },
+    isPlaying: false,
+    actualLetter: { wordIndex: 0, letterIndex: 0 },
+    finishedGame: false,
+    loading: true
+  }))
 }));

@@ -2,18 +2,19 @@ import WordsContainer from '../WordsContainer/WordsContainer'
 import { useGame } from "@hooks/useGame";
 import { gameStore } from '@store/store';
 import Header from '../Header/Header';
-import Results from '../Results/Results';
+import Loading from '../Loading/Loading';
 import './App.module.css'
 
 function App() {
-  const { finishedGame } = gameStore((state) => state)
+  const { loading } = gameStore((state) => state)
   useGame();
 
   return (
     <>
+      {loading && <Loading />}
       <Header />
-      {!finishedGame && <WordsContainer />}
-      {finishedGame && <Results />}
+      <WordsContainer />
+      {/* {finishedGame && <Results />} */}
     </>
   )
 }
