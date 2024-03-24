@@ -2,11 +2,11 @@ import { gameStore } from "@store/store";
 import Letter from "./Letter/Letter"
 import style from "./Word.module.css"
 
-const Word = ({ word, actualLetter, indexWord }) => {
+const Word = ({ word, actualWord, indexWord }) => {
   const { steps } = gameStore((state) => state)
 
   const classList = [style.word];
-  if (actualLetter?.wordIndex - steps.start > indexWord && !word.isCorrect) {
+  if (actualWord?.wordIndex - steps.start > indexWord && !word.isCorrect) {
     classList.push(style.incorrect);
   }
 
@@ -23,7 +23,7 @@ const Word = ({ word, actualLetter, indexWord }) => {
               fullTyped={word.typed}
               indexWord={indexWord}
               indexLetter={index}
-              actualLetter={actualLetter}
+              actualWord={actualWord}
             />
           )
         })
@@ -37,7 +37,7 @@ const Word = ({ word, actualLetter, indexWord }) => {
               incorrect={true}
               fullTyped={word.typed}
               indexLetter={index}
-              actualLetter={actualLetter}
+              actualWord={actualWord}
               indexWord={indexWord}
             />
         })

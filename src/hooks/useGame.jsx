@@ -5,17 +5,18 @@ import { MAX_CHARS_PER_WORD } from "@const/consts";
 
 export const useGame = () => {
   const { wordsData } = useGetWords();
-  const { isPlaying, setIsPlaying, setActualLetter, wrapIndex, setSteps, steps, actualLetter, finishedGame } = gameStore((state) => state)
+  const { isPlaying, setIsPlaying, setActualWord, wrapIndex, setSteps, steps, actualWord, finishedGame } = gameStore((state) => state)
   const { updateWord } = wordsStore((state) => state)
 
   const handleKeyPress = (e) => {
-    if (finishedGame) return;
-    const actualWord = wordsData.words[actualLetter.wordIndex];
-    const typed = actualWord.typed + e.key;
+    if (finishedGame || e.key === "´") return;
+    const word = wordsData.words[actualWord.wordIndex];
+    const typed = word.typed + e.key;
+
     if (e.code === "Space" || e.code === "Enter") {
-      if (!actualWord.typed) return;
-      setActualLetter({ wordIndex: 1, letterIndex: 0 });
-      if (actualLetter.wordIndex - 1 - steps.start === wrapIndex) {
+      if (!word.typed) return;
+      setActualWord({ wordIndex: 1, letterIndex: 0 });
+      if (actualWord.wordIndex - 1 - steps.start === wrapIndex) {
         setSteps({ start: steps.start + wrapIndex + 1, end: steps.end + wrapIndex + 1 })
       }
       return;
@@ -23,20 +24,20 @@ export const useGame = () => {
     if (!isPlaying) setIsPlaying(true);
 
     if (typed.length >= MAX_CHARS_PER_WORD) return;
-    const isCorrect = typed === actualWord.text;
-    setActualLetter({ letterIndex: 1 });
-    updateWord(typed, isCorrect, actualLetter.wordIndex);
+    const isCorrect = typed === word.text;
+    setActualWord({ letterIndex: 1 });
+    updateWord(typed, isCorrect, actualWord.wordIndex);
   };
 
   const handleKeyDown = (e) => {
     if (finishedGame) return;
     if (e.code === "Backspace") {
-      const actualWord = wordsData.words[actualLetter.wordIndex];
-      const typed = actualWord.typed;
+      const word = wordsData.words[actualWord.wordIndex];
+      const typed = word.typed;
       if (!typed) return;
-      const isCorrect = typed === actualWord.text;
-      setActualLetter({ letterIndex: -1 });
-      updateWord(typed.slice(0, -1), isCorrect, actualLetter.wordIndex);
+      const isCorrect = typed === word.text;
+      setActualWord({ letterIndex: -1 });
+      updateWord(typed.slice(0, -1), isCorrect, actualWord.wordIndex);
     }
   }
 

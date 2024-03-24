@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "preact/hooks";
 import { wordsStore, gameStore } from "@store/store";
-import spanish from "../utils/spanish.json";
+import spanish from "../data/spanish.json";
 import { shuffleArray } from './../utils/helpers';
 
 const useGetWords = () => {

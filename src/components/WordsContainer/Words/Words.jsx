@@ -9,7 +9,7 @@ import style from "./Words.module.css"
 const Words = () => {
   const containerRef = useRef(null);
   const { memoizedWords } = useGetWords();
-  const { actualLetter, steps } = gameStore((state) => state);
+  const { actualWord, steps } = gameStore((state) => state);
 
   useGetWrap(containerRef);
 
@@ -31,7 +31,7 @@ const Words = () => {
           return <Word
             word={w}
             key={crypto.randomUUID()}
-            actualLetter={actualLetter}
+            actualWord={actualWord}
             indexWord={index}
           />
         })

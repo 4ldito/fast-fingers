@@ -1,13 +1,13 @@
 Priorities: 
 
-[X] update setActualLetter 
+[X] update setActualWord 
 [] show finish WPM
 [X] remove timer
 [] con backspace poder volver 1 word atrás 
 [] handle ctrl + backspace
 [] Think names. MasterTyping?
 [] arreglar wrap cuando se equivocan
-[] fix bug cuando apretan ´ y luego letra que no tiene tilde
+[X] fix bug cuando apretan ´ y luego letra que no tiene tilde
 
 Others
 

@@ -27,18 +27,18 @@ export const gameStore = create((set) => ({
   setFinishedGame: (finishedGame) => set(() => ({ finishedGame })),
   isPlaying: false,
   setIsPlaying: (isPlaying) => set(() => ({ isPlaying })),
-  actualLetter: {
+  actualWord: {
     wordIndex: 0,
     letterIndex: 0
   },
-  setActualLetter: (pos) => set((state) => ({
-    actualLetter: {
-      wordIndex: pos.wordIndex === 1 ? ++state.actualLetter.wordIndex : pos.wordIndex === 0 ? 0 : state.actualLetter.wordIndex,
+  setActualWord: (pos) => set((state) => ({
+    actualWord: {
+      wordIndex: pos.wordIndex === 1 ? ++state.actualWord.wordIndex : pos.wordIndex === 0 ? 0 : state.actualWord.wordIndex,
       letterIndex:
-        pos.letterIndex === 1 ? ++state.actualLetter.letterIndex
+        pos.letterIndex === 1 ? ++state.actualWord.letterIndex
           : pos.letterIndex === 0 ? 0
-            : pos.letterIndex === -1 ? --state.actualLetter.letterIndex
-              : state.actualLetter.letterIndex,
+            : pos.letterIndex === -1 ? --state.actualWord.letterIndex
+              : state.actualWord.letterIndex,
     },
   })),
   steps: { start: 0, end: 50 },
@@ -54,7 +54,7 @@ export const gameStore = create((set) => ({
     wrapIndex: null,
     steps: { start: 0, end: 50 },
     isPlaying: false,
-    actualLetter: { wordIndex: 0, letterIndex: 0 },
+    actualWord: { wordIndex: 0, letterIndex: 0 },
     finishedGame: false,
     loading: true
   }))
