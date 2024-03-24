@@ -4,12 +4,13 @@ Priorities:
 [] show finish WPM
 [X] remove timer
 [] con backspace poder volver 1 word atrás 
+[] handle ctrl + backspace
 [] Think names. MasterTyping?
 [] arreglar wrap cuando se equivocan
+[] fix bug cuando apretan ´ y luego letra que no tiene tilde
 
 Others
 
-[] timer with SS format instead of S
 [] change icon
 [] change font
 [] add ctrl + p line command

@@ -11,7 +11,7 @@ const Results = () => {
     if (!memoizedWords) return;
     
     const correctWords = memoizedWords.filter(w => w.isCorrect);
-    const totalTime = 5;
+    const totalTime = 25;
     const totalChars = correctWords.reduce((acc, cur) => acc + cur.text.length, 0);
     const wps = totalChars / totalTime / 3; // 3 chars average per word
     const actualWpm = wps * 60;
