@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { DEFAULT_GAMEMODE } from '@const/consts';
-import { getWordIndexs, updateWord } from '../utils/helpers';
+import { getWordIndexs, getUpdatedWord } from '../utils/helpers';
 
 export const wordsStore = create((set) => ({
   wordsData: [],
@@ -9,7 +9,7 @@ export const wordsStore = create((set) => ({
   updateWord: (typedWord, isCorrect, i) => set((state) => ({
     wordsData: {
       ...state.wordsData,
-      words: updateWord({ typedWord, isCorrect, i, state })
+      words: getUpdatedWord({ typedWord, isCorrect, i, state })
     }
   })),
 }));

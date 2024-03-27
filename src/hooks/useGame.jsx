@@ -34,7 +34,13 @@ export const useGame = () => {
     if (e.code === "Backspace") {
       const word = wordsData.words[actualWord.wordIndex];
       const typed = word.typed;
-      if (!typed) return;
+      if (!typed) {
+        // const lastWord = wordsData.words[actualWord.wordIndex - 1];
+        // if (lastWord.isCorrect) return;
+        // console.log({lastWord})
+        // setActualWord({ letterIndex: lastWord.typed.length, wordIndex: -1 });
+        return;
+      }
       const isCorrect = typed.slice(0, -1) === word.text;
       setActualWord({ letterIndex: -1 });
       updateWord(typed.slice(0, -1), isCorrect, actualWord.wordIndex);

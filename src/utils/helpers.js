@@ -14,6 +14,7 @@ export function getWordIndexs(state, pos) {
 
   if (pos.wordIndex === 1) obj.wordIndex = ++state.actualWord.wordIndex
   else if (pos.wordIndex === 0) obj.wordIndex = 0
+  else if (pos.wordIndex === -1) obj.wordIndex = --state.actualWord.wordIndex
 
   if (pos.letterIndex === 1) obj.letterIndex = ++state.actualWord.letterIndex
   else if (pos.letterIndex === 0) obj.letterIndex = 0
@@ -30,7 +31,7 @@ export function getWordIndexs(state, pos) {
   return obj
 }
 
-export function updateWord({ typedWord, isCorrect, i, state }) {
+export function getUpdatedWord({ typedWord, isCorrect, i, state }) {
   const words = state.wordsData.words;
   words[i] = {
     ...words[i],
