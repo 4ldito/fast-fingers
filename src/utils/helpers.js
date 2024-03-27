@@ -30,3 +30,24 @@ export function getWordIndexs(state, pos) {
   return obj
 }
 
+export function updateWord({ typedWord, isCorrect, i, state }) {
+  const words = state.wordsData.words;
+  words[i] = {
+    ...words[i],
+    typed: typedWord,
+    isCorrect: isCorrect ?? words[i].isCorrect
+  }
+  return [...words];
+
+  // return state.wordsData.words.map((word, index) => {
+  //   console.log({index})
+  //   if (index === i) {
+  //     return {
+  //       ...word,
+  //       typed: typedWord,
+  //       isCorrect: isCorrect ?? word.isCorrect
+  //     };
+  //   }
+  //   return word;
+  // })
+}
