@@ -9,6 +9,7 @@ Priorities:
 [] arreglar wrap cuando se equivocan
 [X] fix bug cuando apretan ´ y luego letra que no tiene tilde
 [x] fix bug cuando escriben una palabra bien "esta" y agregan una letra "estaf" y borran una letra "esta" queda como si fuera incorrectas
+[] cuando se aprete espacio, mostrar las letras missed
 
 Others
 

@@ -12,6 +12,16 @@ export const wordsStore = create((set) => ({
       words: getUpdatedWord({ typedWord, isCorrect, i, state })
     }
   })),
+  lettersTyped: {
+    correct: 0,
+    incorrect: 0
+  },
+  addLetterTyped: (letter) => set((state) => ({
+    lettersTyped: {
+      correct: letter.correct ? ++state.lettersTyped.correct : state.lettersTyped.correct,
+      incorrect: letter.incorrect ? ++state.lettersTyped.incorrect : state.lettersTyped.incorrect
+    }
+  }))
 }));
 
 export const gameStore = create((set) => ({
