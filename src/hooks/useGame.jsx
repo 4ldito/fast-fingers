@@ -35,7 +35,7 @@ export const useGame = () => {
       const word = wordsData.words[actualWord.wordIndex];
       const typed = word.typed;
       if (!typed) return;
-      const isCorrect = typed === word.text;
+      const isCorrect = typed.slice(0, -1) === word.text;
       setActualWord({ letterIndex: -1 });
       updateWord(typed.slice(0, -1), isCorrect, actualWord.wordIndex);
     }
