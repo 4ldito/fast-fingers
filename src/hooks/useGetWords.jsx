@@ -5,14 +5,15 @@ import { shuffleArray } from './../utils/helpers';
 
 const useGetWords = () => {
   const { wordsData, setWordsData } = wordsStore((state) => state)
-  const { finishedGame, setLoading } = gameStore((state) => state)
+  const { restart, setLoading, setRestart } = gameStore((state) => state)
 
   useEffect(() => {
-    if (finishedGame) return;
+    if (!restart) return;
     fetchWords();
-  }, [finishedGame])
+  }, [restart])
 
   const fetchWords = () => {
+    setRestart(false);
     // for now, use a JSON. TODO: change to a api request
     const randomSort = shuffleArray(spanish.words)
     const spanishWordsFormated = {

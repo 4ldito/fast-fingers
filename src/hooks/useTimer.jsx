@@ -3,11 +3,12 @@ import { gameStore } from '@store/store';
 import { DEFAULT_TIME } from "@const/consts";
 
 const useTimer = () => {
-  const { isPlaying, setFinishedGame } = gameStore((state) => state)
-  const [time, setTime] = useState(DEFAULT_TIME);
+  const { isPlaying, setFinishedGame, restart } = gameStore((state) => state)
+  const [time, setTime] = useState();
 
   useEffect(() => {
     let timer;
+    setTime(DEFAULT_TIME);
 
     if (isPlaying) {
       timer = setInterval(() => {
@@ -24,7 +25,7 @@ const useTimer = () => {
     }
 
     return () => clearInterval(timer);
-  }, [isPlaying]);
+  }, [isPlaying, restart]);
 
   return { time }
 }

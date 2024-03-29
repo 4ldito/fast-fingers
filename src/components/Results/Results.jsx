@@ -14,8 +14,6 @@ const Results = () => {
     const correctWords = [];
     const incorrectWords = [];
 
-    console.log(lettersTyped)
-
     for (let i = 0; i < memoizedWords.length; i++) {
       const word = memoizedWords[i];
       if (!word.typed) break;

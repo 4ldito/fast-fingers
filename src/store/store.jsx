@@ -46,13 +46,18 @@ export const gameStore = create((set) => ({
   setGamemode: (gamemode) => set(() => ({ gamemode })),
   loading: true,
   setLoading: (loading) => set(() => ({ loading })),
-  restartGameStore: () => set((state) => ({
-    ...state,
-    wrapIndex: null,
-    steps: { start: 0, end: 50 },
-    isPlaying: false,
-    actualWord: { wordIndex: 0, letterIndex: 0 },
-    finishedGame: false,
-    loading: true
-  }))
+  restart: true,
+  setRestart: (restart) => set(() => ({ restart })),
+  restartGameStore: () => set((state) => {
+    return {
+      ...state,
+      wrapIndex: null,
+      steps: { start: 0, end: 50 },
+      isPlaying: false,
+      actualWord: { wordIndex: 0, letterIndex: 0 },
+      finishedGame: false,
+      loading: true,
+      restart: true,
+    }
+  })
 }));
