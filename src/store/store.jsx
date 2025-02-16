@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { DEFAULT_GAMEMODE } from '@const/consts';
+import { DEFAULT_GAMEMODE, GAMEMODE_WORDS_DEFAULT_MAX } from '@const/consts';
 import { getWordIndexs, getUpdatedWord } from '../utils/helpers';
 
 export const wordsStore = create((set) => ({
@@ -38,6 +38,17 @@ export const gameStore = create((set) => ({
       ...getWordIndexs(state, pos)
     },
   })),
+  wordsInfo: { written: 0, max: GAMEMODE_WORDS_DEFAULT_MAX },
+  changeWritten: ({ sum }) => set((state) => {
+    return {
+      wordsInfo: {
+        ...state.wordsInfo,
+        written: sum ? state.wordsInfo.written + 1 : state.wordsInfo.written - 1,
+      }
+    }
+  }),
+  caseSensitive: true,
+  changeCaseSensitive: (caseSensitive) => set(() => ({ caseSensitive })),
   steps: { start: 0, end: 50 },
   setSteps: (steps) => set(() => ({ steps })),
   wrapIndex: null,
@@ -58,6 +69,7 @@ export const gameStore = create((set) => ({
       finishedGame: false,
       loading: true,
       restart: true,
+      wordsInfo: { written: 0, max: GAMEMODE_WORDS_DEFAULT_MAX },
     }
   })
 }));

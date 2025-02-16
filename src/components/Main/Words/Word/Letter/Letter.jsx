@@ -3,7 +3,7 @@ import { gameStore } from "@store/store"
 import style from "./Letter.module.css"
 
 const Letter = ({ letter, typed, indexWord, indexLetter, actualWord, word, fullTyped, incorrect }) => {
-  const { steps } = gameStore((state) => state)
+  const { steps, caseSensitive } = gameStore((state) => state)
 
   const activeWordIndex = actualWord?.wordIndex - steps.start
   const isCurrentLetter = indexWord === activeWordIndex && indexLetter === actualWord?.letterIndex
@@ -12,8 +12,10 @@ const Letter = ({ letter, typed, indexWord, indexLetter, actualWord, word, fullT
 
   const correctClasses = useMemo(() => {
     const classes = [style.letter]
-    if (letter === typed) classes.push(style.correct)
-    if ((letter !== typed && typed) || (incorrect)) classes.push(style.incorrect)
+    const compareLetter = caseSensitive ? letter : letter.toLowerCase();
+    const compareTyped = caseSensitive ? typed : typed?.toLowerCase();
+    if (compareLetter === compareTyped) classes.push(style.correct)
+    if ((compareLetter !== compareTyped && typed) || (incorrect)) classes.push(style.incorrect)
     if (isCurrentLetter) classes.push(style.active)
     else if (isLastLetter || isLastIncorrect) classes.push(style.final)
     return classes.join(" ")

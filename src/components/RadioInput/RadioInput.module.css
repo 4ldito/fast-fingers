@@ -1,0 +1,12 @@
+.radio {
+    font-size: 1rem;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.selectedRadio {
+    background-color: #0b0d3d;
+}

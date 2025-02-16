@@ -1,12 +1,12 @@
 import Gamemodes from "./Gamemodes/Gamemodes"
 import style from "./Header.module.css"
-import Logo from "./Logo/Logo"
+import SettingsMenu from "./SettingsMenu/SettingsMenu"
 
 const Header = () => {
   return (
     <header className={style.container}>
-      <Logo />
       <Gamemodes />
+      <SettingsMenu />
     </header>
   )
 }

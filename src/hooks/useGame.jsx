@@ -2,10 +2,11 @@ import { useEffect } from "preact/hooks";
 import useGetWords from './useGetWords';
 import { wordsStore, gameStore } from "@store/store";
 import { MAX_CHARS_PER_WORD } from "@const/consts";
+import { GAMEMODE_WORDS } from "../const/consts";
 
 export const useGame = () => {
   const { wordsData } = useGetWords();
-  const { isPlaying, setIsPlaying, setActualWord, wrapIndex, setSteps, steps, actualWord, finishedGame, restartGameStore } = gameStore((state) => state)
+  const { caseSensitive, isPlaying, setIsPlaying, setActualWord, wrapIndex, setSteps, steps, actualWord, finishedGame, restartGameStore, gamemode, changeWritten, wordsInfo, setFinishedGame } = gameStore((state) => state)
   const { updateWord, addLetterTyped } = wordsStore((state) => state)
 
   const handleKeyPress = (e) => {
@@ -19,16 +20,32 @@ export const useGame = () => {
       if (actualWord.wordIndex - 1 - steps.start === wrapIndex) {
         setSteps({ start: steps.start + wrapIndex + 1, end: steps.end + wrapIndex + 1 })
       }
+      if (gamemode === GAMEMODE_WORDS) {
+        changeWritten({ sum: true });
+
+        if (wordsInfo.written >= wordsInfo.max - 1) {
+          setFinishedGame(true)
+        }
+      }
       return;
     }
 
-    const isLetterCorrect = word.text[actualWord.letterIndex] === e.key
+    let isLetterCorrect;
+    let isCorrect;
+    if (!caseSensitive) {
+      isLetterCorrect = word.text[actualWord.letterIndex]?.toLowerCase() === e.key.toLowerCase()
+      isCorrect  = typed?.toLowerCase() === word.text.toLowerCase();
+    }
+    else {
+      isLetterCorrect = word.text[actualWord.letterIndex] === e.key
+      isCorrect  = typed === word.text;
+    }
+
     addLetterTyped({ correct: isLetterCorrect, incorrect: !isLetterCorrect })
 
     if (!isPlaying) setIsPlaying(true);
     if (typed.length >= MAX_CHARS_PER_WORD) return;
 
-    const isCorrect = typed === word.text;
     setActualWord({ letterIndex: 1 });
     updateWord(typed, isCorrect, actualWord.wordIndex);
   };
@@ -50,7 +67,15 @@ export const useGame = () => {
         // setActualWord({ letterIndex: lastWord.typed.length, wordIndex: -1 });
         return;
       }
-      const isCorrect = typed.slice(0, -1) === word.text;
+      let isCorrect;
+
+      if (!caseSensitive) {
+        isCorrect  = typed.slice(0, -1)?.toLowerCase() === word.text.toLowerCase();
+      }
+      else {
+        isCorrect  = typed.slice(0, -1) === word.text;
+      }
+
       setActualWord({ letterIndex: -1 });
       updateWord(typed.slice(0, -1), isCorrect, actualWord.wordIndex);
     }

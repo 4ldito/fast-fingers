@@ -1,6 +1,7 @@
 import style from "./Gamemodes.module.css"
 import RadioInput from './../../RadioInput/RadioInput';
 import { gameStore } from "../../../store/store";
+import { GAMEMODE_WORDS } from "../../../const/consts";
 
 const gamemodes = [
   {
@@ -8,7 +9,7 @@ const gamemodes = [
     label: "Tiempo",
   },
   {
-    value: "words",
+    value: GAMEMODE_WORDS,
     label: "Palabras",
   },
   {
@@ -37,7 +38,6 @@ const Gamemodes = () => {
             state={gamemode}
             value={g.value}
             label={g.label}
-            name={"opts"}
             onChange={handleGamemodeChange}
           />
         )

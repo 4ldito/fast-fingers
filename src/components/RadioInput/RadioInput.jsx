@@ -1,11 +1,10 @@
 import style from './RadioInput.module.css'
 
-const RadioInput = ({ label, name, onChange, value, state }) => {
+const RadioInput = ({ label, onChange, value, state }) => {
   return (
-    <div className={style.radioGroup}>
-      <input checked={state === value} type="radio" name={name} onChange={onChange} value={value} />
-      <label htmlFor="opt1" >{label}</label>
-    </div>
+    <button className={`${style.radio} ${state === value ? style.selectedRadio : ""}`} onClick={onChange} value={value}>
+      {label}
+    </button>
   )
 }
 
