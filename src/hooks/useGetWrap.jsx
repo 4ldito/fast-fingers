@@ -2,7 +2,7 @@ import { useEffect } from "preact/hooks";
 import { gameStore } from "@store/store";
 
 const useGetWrap = (containerRef) => {
-  const { setWrapIndex, steps } = gameStore((state) => state);
+  const { setWrapIndex, steps, actualWord } = gameStore((state) => state);
 
   useEffect(() => {
     const detectWrap = () => {
@@ -36,7 +36,7 @@ const useGetWrap = (containerRef) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [steps]);
+  }, [steps, actualWord]);
 }
 
 export default useGetWrap
