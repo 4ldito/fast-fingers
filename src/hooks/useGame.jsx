@@ -6,7 +6,7 @@ import { GAMEMODE_WORDS } from "../const/consts";
 
 export const useGame = () => {
   const { wordsData } = useGetWords();
-  const { caseSensitive, isPlaying, setIsPlaying, setActualWord, wrapIndex, setSteps, steps, actualWord, finishedGame, restartGameStore, gamemode, changeWritten, wordsInfo, setFinishedGame } = gameStore((state) => state)
+  const { caseSensitive, isPlaying, setIsPlaying, setActualWord, wrapIndex, setSteps, steps, actualWord, finishedGame, restartGameStore, gamemode, changeWritten, wordsInfo, setFinishedGame, firstRow } = gameStore((state) => state)
   const { updateWord, addLetterTyped } = wordsStore((state) => state)
 
   const handleKeyPress = (e) => {
@@ -17,8 +17,9 @@ export const useGame = () => {
     if (e.code === "Space" || e.code === "Enter") {
       if (!word.typed) return;
       setActualWord({ wordIndex: 1, letterIndex: 0 });
+
       if (actualWord.wordIndex - 1 - steps.start === wrapIndex) {
-        setSteps({ start: steps.start + wrapIndex + 1, end: steps.end + wrapIndex + 1 })
+        setSteps({ start: steps.start + firstRow + 1, end: steps.end + firstRow + 1 })
       }
       if (gamemode === GAMEMODE_WORDS) {
         changeWritten({ sum: true });
@@ -30,15 +31,16 @@ export const useGame = () => {
       return;
     }
 
+
     let isLetterCorrect;
     let isCorrect;
     if (!caseSensitive) {
       isLetterCorrect = word.text[actualWord.letterIndex]?.toLowerCase() === e.key.toLowerCase()
-      isCorrect  = typed?.toLowerCase() === word.text.toLowerCase();
+      isCorrect = typed?.toLowerCase() === word.text.toLowerCase();
     }
     else {
       isLetterCorrect = word.text[actualWord.letterIndex] === e.key
-      isCorrect  = typed === word.text;
+      isCorrect = typed === word.text;
     }
 
     addLetterTyped({ correct: isLetterCorrect, incorrect: !isLetterCorrect })
@@ -70,10 +72,10 @@ export const useGame = () => {
       let isCorrect;
 
       if (!caseSensitive) {
-        isCorrect  = typed.slice(0, -1)?.toLowerCase() === word.text.toLowerCase();
+        isCorrect = typed.slice(0, -1)?.toLowerCase() === word.text.toLowerCase();
       }
       else {
-        isCorrect  = typed.slice(0, -1) === word.text;
+        isCorrect = typed.slice(0, -1) === word.text;
       }
 
       setActualWord({ letterIndex: -1 });

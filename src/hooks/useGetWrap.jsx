@@ -12,16 +12,25 @@ const useGetWrap = (containerRef) => {
       const childrens = Array.from(container.children);
       let previousTop = null;
       let warpChildren = null;
-
+      let firstRowChildren = null;
+      let changedTop = 0;
+      
       for (let i = 0; i < childrens.length; i++) {
         const { top } = childrens[i].getBoundingClientRect();
         if (previousTop !== null && top > previousTop) {
-          warpChildren = i - 1
-          break;
+          changedTop++;
+
+          if (changedTop === 1) {
+            firstRowChildren = i - 1;
+          }
+          if (changedTop > 1) {
+            warpChildren = i - 1
+            break;
+          }
         }
         previousTop = top;
       }
-      setWrapIndex(warpChildren)
+      setWrapIndex(warpChildren, firstRowChildren)
     };
 
     const handleResize = () => {
